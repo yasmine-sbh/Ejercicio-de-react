@@ -1,0 +1,38 @@
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  width: 90px;
+  height: 90px;
+}
+
+.profile {
+  margin-bottom: 30px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 5px;
+  margin: 5px 0;
+  width: 200px;
+}
+
+button {
+  padding: 7px 15px;
+  cursor: pointer;
+}
+
+.admin-panel {
+  background-color: #f8d7da;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.user-dashboard {
+  background-color: #d1ecf1;
+  padding: 10px;
+  margin-bottom: 20px;
+}

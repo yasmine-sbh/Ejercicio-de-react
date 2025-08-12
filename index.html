@@ -2,7 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>React sans Node.js</title>
+    <title>React sans Node.js - App séparée</title>
+
+    <link rel="stylesheet" href="App.css" />
+
+    <!-- React, ReactDOM et Babel via CDN -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -10,26 +14,13 @@
   <body>
     <div id="root"></div>
 
+    <!-- Ton code React dans App.js -->
+    <script type="text/babel" src="App.js"></script>
+
     <script type="text/babel">
-      function MyButton() {
-        return (
-          <button>
-            I'm a button
-          </button>
-        );
-      }
-
-      function MyApp() {
-        return (
-          <div>
-            <h1>Welcome to my app</h1>
-            <MyButton />
-          </div>
-        );
-      }
-
       const root = ReactDOM.createRoot(document.getElementById('root'));
-      root.render(<MyApp />);
+      root.render(<App />);
     </script>
   </body>
 </html>
+
