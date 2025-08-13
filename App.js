@@ -20,9 +20,22 @@ const users = [
 ];
 
 // Composants
-function MyButton() {
+function MyButton1() {
   return <button>I'm a button</button>;
 }
+
+function MyButton2() {
+  function handleClick() {
+    alert('You clicked me!');
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Click me
+    </button>
+  );
+}
+
 
 function AboutPage() {
   return (
@@ -123,7 +136,8 @@ function App() {
       {role === 'admin' ? <AdminPanel /> : <UserDashboard />}
 
       <h1>Welcome to my app</h1>
-      <MyButton />
+      <MyButton1 />
+      <MyButton2 />
 
       <div>
         {users.map((user, index) => (
@@ -132,6 +146,33 @@ function App() {
       </div>
 
       <AboutPage />
+
+       <h2>Shopping List</h2>
+       <ShoppingList />
     </div>
   );
 }
+
+const products = [
+  { title: 'Cabbage', isFruit: false, id: 1 },
+  { title: 'Garlic', isFruit: false, id: 2 },
+  { title: 'Apple', isFruit: true, id: 3 },
+];
+
+function ShoppingList() {
+  const listItems = products.map(product =>
+    <li
+      key={product.id}
+      style={{
+        color: product.isFruit ? 'magenta' : 'darkgreen'
+      }}
+    >
+      {product.title}
+    </li>
+  );
+
+  return (
+    <ul>{listItems}</ul>
+  );
+}
+
