@@ -7,7 +7,7 @@ const users = [
   { name: 'Grace Hopper', imageUrl: 'https://m.media-amazon.com/images/M/MV5BMTc0MTcxMDAxN15BMl5BanBnXkFtZTgwMjMxODIzNTE@._V1_.jpg', imageSize: 90 }
 ];
 
-// Composants
+// Boutons simples
 function MyButton1() { return <button>I'm a button</button>; }
 
 function MyButton2() {
@@ -15,14 +15,36 @@ function MyButton2() {
   return <button onClick={handleClick}>Click me</button>;
 }
 
+// Boutons avec compteur séparé
 function MyButton() {
   const [count, setCount] = useState(0);
   function handleClick() { setCount(count + 1); }
   return <button onClick={handleClick}>Clicked {count} times</button>;
 }
 
+// Boutons partagés pour le compteur partagé
+function SharedButton({ count, onClick }) {
+  return <button onClick={onClick}>Clicked {count} times</button>;
+}
+
+// Compteur partagé
+function SharedCounter() {
+  const [count, setCount] = useState(0);
+  function handleClick() { setCount(count + 1); }
+
+  return (
+    <div>
+      <h2>Counters that update together</h2>
+      <SharedButton count={count} onClick={handleClick} />
+      <SharedButton count={count} onClick={handleClick} />
+    </div>
+  );
+}
+
+// Page à propos
 function AboutPage() { return <><h1>About</h1><p>Hello there.<br/>How do you do?</p></>; }
 
+// Profil utilisateur
 function Profile({ user }) {
   return (
     <div className="profile">
@@ -32,10 +54,11 @@ function Profile({ user }) {
   );
 }
 
+// Panels
 function AdminPanel() { return <div><h2>Bienvenue Admin</h2><p>Voici le panneau d'administration.</p></div>; }
-
 function UserDashboard() { return <div><h2>Bienvenue Utilisateur</h2><p>Voici votre tableau de bord.</p></div>; }
 
+// Shopping list
 const products = [
   { title: 'Cabbage', isFruit: false, id: 1 },
   { title: 'Garlic', isFruit: false, id: 2 },
@@ -50,6 +73,7 @@ function ShoppingList() {
   );
 }
 
+// Composant principal
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [role, setRole] = useState(null);
@@ -80,13 +104,18 @@ function App() {
     <div>
       <button onClick={handleLogout}>Se déconnecter</button>
       {role === 'admin' ? <AdminPanel /> : <UserDashboard />}
+
       <h1>Welcome to my app</h1>
       <MyButton1 />
       <MyButton2 />
 
+      {/* Compteurs séparés */}
       <h2>Counters that update separately</h2>
       <MyButton />
       <MyButton />
+
+      {/* Compteur partagé */}
+      <SharedCounter />
 
       <div>
         {users.map((user, idx) => <Profile key={idx} user={user} />)}
